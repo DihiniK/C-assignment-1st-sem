@@ -18,6 +18,11 @@ void deliveryRequest(char cities[MAX_CITIES][MAX_NAME_LENGTH], float distance_ma
 void report(float distance_matrix[MAX_CITIES][MAX_CITIES], int deliverySource[MAX_DELIVERIES], int deliveryDestination[MAX_DELIVERIES], float customerCharge[MAX_DELIVERIES], float profit[MAX_DELIVERIES], float time[MAX_DELIVERIES], int deliveryCount);
 void leastDistanceRoute(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distance_matrix[MAX_CITIES][MAX_CITIES],int cityCount);
 
+char *vehicle[3] = {"Van", "Truck", "Lorry"};
+int capacity[3] = {1000, 5000, 10000};
+float ratePerKm[3] = {30, 40, 80};
+float avgSpeed[3] = {60, 50, 45};
+float fuelEfficiency[3] = {12, 6, 4};
 
 
 int main()
