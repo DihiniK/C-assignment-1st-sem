@@ -393,6 +393,62 @@ void report(float distance_matrix[MAX_CITIES][MAX_CITIES], int deliverySource[MA
 
 int main()
 {
+    int choice;
+    do
+    {
+        printf("\n------ LOGISTICS MANAGEMENT MENU ------\n");
+        printf("1. Add City\n");
+        printf("2. Rename City\n");
+        printf("3. Remove City\n");
+        printf("4. Display Cities\n");
+        printf("5. Manage Distance\n");
+        printf("6. Display Distance Table\n");
+        printf("7. Request to Delivery\n");
+        printf("8. Least Distance Route\n");
+        printf("9. Show Report\n");
+        printf("0. Exit\n");
+        printf("----------------------------------------\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            addCity(cities,&cityCount);
+            break;
+        case 2:
+            renameCity(cities,cityCount);
+            break;
+        case 3:
+            removeCity(cities, distance_matrix, &cityCount);
+            break;
+        case 4:
+            displayCity(cities, cityCount);
+            break;
+        case 5:
+            manageDistance(cities, distance_matrix, cityCount);
+            break;
+        case 6:
+            displayDistanceTable(cities,distance_matrix, cityCount);
+            break;
+        case 7:
+            calculateDelivery(cities, distance_matrix, &deliveryCount, cityCount);
+            break;
+        case 8:
+            leastDistanceRoute(cities, distance_matrix, cityCount);
+            break;
+        case 9:
+            report(distance_matrix, deliverySource, deliveryDestination, chargeList, profitList, timeList, deliveryCount);
+            break;
+        case 0:
+            printf("Exiting program...\n");
+            break;
+        default:
+            printf("Invalid choice! Try again.\n");
+        }
+    }
+    while (choice != 0);
+
 
     return 0;
 }
