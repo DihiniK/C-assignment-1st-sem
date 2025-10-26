@@ -40,6 +40,35 @@ float chargeList[MAX_DELIVERIES];
 float timeList[MAX_DELIVERIES];
 int deliveryCount= 0;
 
+void addCity(char cities[MAX_CITIES][MAX_NAME_LENGTH],int *cityCount){
+
+    char newCity[MAX_NAME_LENGTH];
+    int i;
+
+   if(cityCount< MAX_CITIES){
+
+    printf("\nEnter city name (in lowercase):");
+    fgets(newCity, sizeof(newCity),stdin);
+
+}
+
+   for (int i =0;i<=MAX_CITIES;i++){
+
+     if(strcmp(cities[cityCount],newCity)== 0){
+
+    printf("\n This city already exists.")
+}
+    else{
+
+    strcpy(cities[cityCount],newCity);
+    cityCount++;
+}
+
+}
+
+
+}
+
 
 
 
