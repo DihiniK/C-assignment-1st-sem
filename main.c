@@ -292,6 +292,66 @@ void deliveryRequest(char cities[MAX_CITIES][MAX_NAME_LENGTH], float distance_ma
 
 
 
+void leastDistanceRoute(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distance_matrix[MAX_CITIES][MAX_CITIES],int cityCount){
+
+int city1,city2;
+float min = distance_matrix[city1][city2];
+int mid= -1;
+float total;
+
+    printf("Enter source index: ");
+    scanf("%d", &city1);
+    printf("Enter destination index: ");
+    scanf("%d", &city2);
+    if (city1 == city2)
+    {
+        printf("Source and destination cannot be same.\n");
+        return;
+    }
+
+    if (distance[city1][city2] == 0)
+    {
+        printf("No direct distance  between recorded cities.\n");
+        return;
+    }
+
+
+
+    for (int i = 0; i < cityCount; i++)
+    {
+        if (i == city1 || i == city2){
+
+
+        if (distance_matrix[city1][i] > 0 && distance_matrix[i][city2] > 0)
+        {
+            total = distance_matrix[city1][i] + distance_matrix[i][city2];
+            if (total < min)
+            {
+                min = total;
+                mid= i;
+            }
+        }
+    }
+    }
+
+
+    if (mid == -1)
+    {
+        printf("%s -> %s\n", cities[city1], cities[city2]);
+    }
+    else
+    {
+        printf("%s -> %s -> %s\n", cities[city1], cities[mid], cities[city2]);
+
+
+    }
+    printf("Minimum distance: %.2f km\n", min);
+
+
+}
+
+
+
 
 int main()
 {
