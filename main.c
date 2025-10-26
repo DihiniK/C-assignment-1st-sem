@@ -393,6 +393,6 @@ void report(float distance_matrix[MAX_CITIES][MAX_CITIES], int deliverySource[MA
 
 int main()
 {
-    printf("Hello world!\n");
+
     return 0;
 }
