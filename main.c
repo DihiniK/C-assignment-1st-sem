@@ -69,6 +69,37 @@ void addCity(char cities[MAX_CITIES][MAX_NAME_LENGTH],int *cityCount){
 
 }
 
+void renameCity(char cities[MAX_CITIES][MAX_NAME_LENGTH],int cityCount){
+
+   char newCity[MAX_NAME_LENGTH];
+    int i,j;
+
+   if(cityCount< MAX_CITIES){
+
+    printf("\nEnter the new city name (in lowercase):");
+    fgets(newCity, sizeof(newCity),stdin);
+    printf("\nEnter the number of the place in array which should removed:");
+    scanf("%d",j);
+
+}
+
+   for (int i =0;i<=MAX_CITIES;i++){
+
+     if(strcmp(cities[cityCount],newCity)== 0){
+
+    printf("\n This city already exists.")
+}
+    else{
+
+    strncpy(cities[cityCount],newCity, int j);
+    cityCount++;
+}
+
+}
+
+
+
+}
 
 
 
