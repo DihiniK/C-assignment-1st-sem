@@ -157,6 +157,42 @@ void displayCities(char cities[MAX_CITIES][MAX_NAME_LENGTH],int cityCount) {
 }
 
 
+void manageDistance(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distance_matrix[MAX_CITIES][MAX_CITIES],int cityCount)
+{
+
+    if (cityCount == 0)
+    {
+        printf("No cities added yet.\n");
+        return;
+    }
+    for (int i = 0; i < cityCount; i++){
+        printf("cities : %d. %s\n", i, cities[i]);
+    }
+
+
+    if (cityCount < 2)
+    {
+        printf("At least two cities are required!\n");
+        return;
+    }
+    int i, j;
+    int city1,city2;
+    printf("Enter source city index: ");
+    scanf("%d", &city1);
+    printf("Enter destination city index: ");
+    scanf("%d", &city2);
+    if (city1 == city2)
+    {
+        printf("Distance from a city to itself is 0.\n");
+        return;
+    }
+    printf("Enter distance (km): ");
+    scanf("%f", &distance_matrix[i][j]);
+    distance_matrix[j][i] = distance_matrix[i][j];
+    printf("Distance recorded successfully!\n");
+}
+
+
 
 int main()
 {
