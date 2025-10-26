@@ -192,6 +192,17 @@ void manageDistance(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distance_matr
     printf("Distance recorded successfully!\n");
 }
 
+void displayDistanceTable(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distance_matrix[MAX_CITIES][MAX_CITIES],int cityCount)
+{
+    printf("\nDistance Table (km):\n");
+    for (int i = 0; i < cityCount; i++)
+    {
+        for (int j = 0; j < cityCount; j++)
+            printf("%6.1f ", distance_matrix[i][j]);
+        printf("\n");
+    }
+}
+
 
 
 int main()
