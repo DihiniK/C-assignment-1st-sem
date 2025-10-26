@@ -142,6 +142,19 @@ void removeCity(char cities[MAX_CITIES][MAX_NAME_LENGTH],int *cityCount) {
     cityCount--;
 }
 
+void displayCities(char cities[MAX_CITIES][MAX_NAME_LENGTH],int cityCount) {
+    int i;
+
+    if(cityCount == 0) {
+        printf("\nNo cities stored.\n");
+        return;
+    }
+
+    printf("\nStored Cities:\n");
+    for(i = 0; i < cityCount; i++) {
+        printf("%d. %s\n", i + 1, cities[i]);
+    }
+}
 
 
 
