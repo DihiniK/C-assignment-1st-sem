@@ -351,6 +351,44 @@ float total;
 }
 
 
+void report(float distance_matrix[MAX_CITIES][MAX_CITIES], int deliverySource[MAX_DELIVERIES], int deliveryDestination[MAX_DELIVERIES], float customerCharge[MAX_DELIVERIES], float profit[MAX_DELIVERIES], float time[MAX_DELIVERIES], int deliveryCount){
+
+  float totalDistance = 0;
+  float totalRevenue = 0;
+  float totalProfit = 0;
+  float totalTime = 0;
+  float avgTime;
+
+
+
+    for (int i = 0; i < deliveryCount; i++)
+    {
+        totalDistance += distance[deliverySource[i]][deliveryDestination[i]];
+        totalRevenue += chargeList[i];
+        totalProfit += profitList[i];
+        totalTime += timeList[i];
+    }
+
+    printf("\nPERFORMANCE REPORT\n");
+    printf("Total Deliveries: %d\n", deliveryCount);
+    printf("Total Distance: %.2f km\n", totalDistance);
+
+    if (deliveryCount != 0)
+        avgTime = totalTime / deliveryCount;
+    else
+        avgTime = 0;
+
+    printf("Average Time: %.2f hrs\n", avgTime);
+
+    printf("Total Revenue: %.2f LKR\n", totalRevenue);
+    printf("Total Profit: %.2f LKR\n", totalProfit);
+
+    printf("\n-------------------------------------------\n");
+
+
+}
+
+
 
 
 int main()
