@@ -204,6 +204,94 @@ void displayDistanceTable(char cities[MAX_CITIES][MAX_NAME_LENGTH],float distanc
 }
 
 
+void deliveryRequest(char cities[MAX_CITIES][MAX_NAME_LENGTH], float distance_matrix[MAX_CITIES][MAX_CITIES], int *deliveryCount, int cityCount)
+{
+    if (*deliveryCount >= MAX_DELIVERIES){
+        printf("Couldn't loud . Delivery limit exceeds.");
+        return;
+
+   }
+
+    if (cityCount < 2)
+    {
+        printf("Add at least two cities first!\n");
+        return;
+    }
+
+
+    int city1, city2, vehicleType;
+    float weight;
+    printf("Enter source city index: ");
+    scanf("%d", &city1);
+    printf("Enter destination city index: ");
+    scanf("%d", &city2);
+    printf("Enter weight (kg): ");
+    scanf("%f", &weight);
+    printf("Vehicle (1=Van, 2=Truck, 3=Lorry): ");
+    scanf("%d", &vehicleType);
+    vehicleType--;
+
+    if (city1 == city2)
+    {
+        printf("Error: Same cities!\n");
+        return;
+ }
+    if (vehicleType < 0 || vehicleType > 3)
+    {
+        printf("Invalid vehicle type!\n");
+        return;
+    }
+    if (weight > capacity[vehicleType])
+    {
+        printf("Error: Exceeds capacity!\n");
+        return;
+    }
+
+    float D = distance_matrix[city1][city2];
+    float R = ratePerKm[vehicleType];
+    float S = avgSpeed[vehicleType];
+    float E = fuelEfficiency[vehicleType];
+
+
+    float cost = D * R * (1 + weight / 10000.0);
+    float fuelUsed = D / E;
+    float fuelCost = fuelUsed * FUEL_PRICE;
+    float totalCost = cost + fuelCost;
+    float profit = cost * 0.25;
+    float customerCharge = totalCost + profit;
+    float time = D / S;
+
+
+    int i = *deliveryCount;
+    deliverySource[i] = city1;
+    deliveryDestination[i] = city2;
+    deliveryVehicleType[i] = vehicleType;
+    deliveryWeight[i] = weight;
+    deliveryCost[i] = cost;
+    fuelUsedList[i] = fuelUsed;
+    totalCostList[i] = totalCost;
+    profitList[i] = profit;
+    chargeList[i] = customerCharge;
+    timeList[i] = time;
+    (*deliveryCount)++;
+
+    printf("\nDELIVERY SUMMARY\n");
+    printf("From: %s  To: %s\n", citie[city1], cities[city2]);
+    printf("Vehicle: %s\n",vehicle[vehicleType]);
+    printf("Weight: %.1f kg\n", weight);
+    printf("Minimum Distance: %.1f km\n", D);
+    printf("Base Cost: %.1f LKR\n", cost);
+    printf("Fuel Used: %.1f L\n", fuelUsed);
+    printf("Fuel Cost: %.1f LKR\n", fuelCost);
+    printf("Operational Cost: %.1f LKR\n", totalCost);
+    printf("Profit: %.1f LKR\n", profit);
+    printf("Customer Charge: %.1f LKR\n", customerCharge);
+    printf("Estimated Time: %.1f hrs\n", time);
+    printf("\n----------------------------\n");
+}
+
+
+
 
 int main()
 {
